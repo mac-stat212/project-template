@@ -1,0 +1,87 @@
+# options for Quarto book
+# https://quarto.org/docs/reference/projects/books.html
+# 
+# Options for html
+# https://quarto.org/docs/reference/projects/websites.html#section
+
+project:
+  type: book
+  output-dir: docs
+
+
+book:
+  title: "COMP/STAT112 Notebook"
+  author: "Your Name Here"
+  date: today  # use today to update date published based on last time project was edited
+  # favicon: images/logo.png
+  reader-mode: true
+  # site-url: https://hashcx.github.io/mac-comp112website-f24/
+  page-navigation: true
+  back-to-top-navigation: true
+  cookie-consent: true
+  # bread-crumbs: true  # causes problems with older Quarto version
+  # downloads: [pdf]
+  # repo-url: https://github.com/hashcx/mac-comp112website-f24
+  # repo-actions: [edit, issue]
+  # repo-link-target: "_blank" #makes issue and edit links open in a new window/tab 
+
+
+  sidebar:
+    title: "Your Name Here"
+    collapse-level: 2
+    style: "docked"
+    pinned: true
+    search: true
+
+
+  chapters:
+    - index.qmd
+
+    - part: "Section 1" # or src/s1/s1.qmd
+      chapters: 
+      - src/s1/s1-sample1.qmd
+      - src/s1/s1-sample2.qmd
+
+    - part: "Section 1" # or src/s2/s2.qmd
+      chapters: 
+      - src/s2/s2-sample1.qmd
+      - src/s2/s2-sample2.qmd
+
+  appendices:
+  - src/appx/appx-sample1.qmd
+  - src/appx/appx-sample2.qmd
+
+
+format:
+  html:
+    theme: # bootswatch themes--other options https://bootswatch.com/
+      light: flatly
+      dark: darkly
+    search: true
+    toc: true
+    toc-depth: 3
+    link-external-newwindow: true
+    css: style/custom.css
+    smooth-scroll: true
+    code-overflow: scroll
+    code-copy: true
+    code-link: true
+    code-line-numbers: true
+    code-block-bg: true
+    code-block-border-left: "#1482FA"
+    code-tools: true
+    page-layout: full
+
+  # pdf:
+  #   documentclass: scrreprt
+  #   keep-tex: false
+
+
+execute:
+  cache: true
+#   freeze: auto # remove when using GitHub action to execute code
+
+
+editor: 
+  markdown:
+    wrap: sentence # Forces each sentence to be on its own line in source markdown, however, it doesn't affect how it is rendered
