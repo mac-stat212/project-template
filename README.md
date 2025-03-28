@@ -1,0 +1,2 @@
+# qb
+Quarto book template
