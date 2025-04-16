@@ -1,6 +1,9 @@
+# Creating Quarto Book
+# https://quarto.org/docs/books/
+#
 # options for Quarto book
 # https://quarto.org/docs/reference/projects/books.html
-# 
+#
 # Options for html
 # https://quarto.org/docs/reference/projects/websites.html#section
 
@@ -25,7 +28,7 @@ book:
   # downloads: [pdf]
   # repo-url: https://github.com/hashcx/mac-comp112website-f24
   # repo-actions: [edit, issue]
-  # repo-link-target: "_blank" #makes issue and edit links open in a new window/tab 
+  # repo-link-target: "_blank" #makes issue and edit links open in a new window/tab
 
 
   sidebar:
@@ -39,12 +42,12 @@ book:
     - index.qmd
 
     - part: "Section 1" # or src/s1/s1.qmd
-      chapters: 
+      chapters:
       - src/s1/s1-sample1.qmd
       - src/s1/s1-sample2.qmd
 
     - part: "Section 1" # or src/s2/s2.qmd
-      chapters: 
+      chapters:
       - src/s2/s2-sample1.qmd
       - src/s2/s2-sample2.qmd
 
@@ -90,7 +93,7 @@ execute:
 
 
 
-editor: 
+editor:
   mode: source
   markdown:
     wrap: sentence # Forces each sentence to be on its own line in source markdown, however, it doesn't affect how it is rendered
