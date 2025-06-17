@@ -1,3 +1,7 @@
+# NOTE
+# /data/ ==> ignore ALL  data folders
+# /data  ==> ignore ONLY data folder from the root of the project
+
 # History files
 .Rhistory
 .Rapp.history
