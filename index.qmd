@@ -28,7 +28,7 @@ lapply(packages, require, character.only = TRUE)
 #| output: false
 #| echo: false
 
-ds <- read.csv(here("data", "msg.csv"))
+ds <- read.csv(here("data", "raw", "msg.csv"))
 ```
 
 ```{r}
