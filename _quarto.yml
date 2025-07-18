@@ -43,8 +43,8 @@ book:
 
   sidebar:
     title: "Sidebar Title Here"
-    # logo: path/to/sidebar/logo.png
-    # logo-alt: "Alt text for sidebar logo"
+    logo: assets/sidebar-logo.png
+    logo-alt: "Random negative space illustration"
     collapse-level: 2
     style: "docked"
     pinned: true
