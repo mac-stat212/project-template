@@ -19,6 +19,6 @@ In RStudio command window, issue the following command to render the website loc
 
 ### Automatic Approach
 
--   Rename the `github` folder to `.github`
+-   Rename the `.githubX` folder to `.github`
 -   Edit `.github\workflows\publish.yml` as needed. The file links to webpages for helpful information
 -   Customize `.github\issue_template.md` as needed
