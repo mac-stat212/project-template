@@ -65,12 +65,6 @@ book:
         - eda/eda-member2.qmd
         - eda/eda-member3.qmd
 
-    - part: "Effective Teamwork"
-      chapters:
-        - etw/etw-member1.qmd
-        - etw/etw-member2.qmd
-        - etw/etw-member3.qmd
-
   appendices:
   - appx/proposal.qmd
   - appx/case-study.qmd
@@ -115,7 +109,7 @@ execute:
   echo: true
   warning: false
   error: false
-  cache: true
+  cache: false
 #   freeze: auto # remove when using GitHub action to execute code
 
 
