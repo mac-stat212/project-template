@@ -1,29 +1,33 @@
 on:
   push:
     branches:
-      - hashcx
+      - main
 
 
+# workflow name
 name: Publish Quarto Project
 
 
-# you need these permissions to publish to GitHub pages
+# required permissions to publish to GitHub pages
 permissions:
     contents: write
     pages: write
 
 
+# jobs to do as part of the workflow
 jobs:
+  # job 1: build & deploy
   build-deploy:
-    # Runner Images: https://github.com/actions/runner-images
+    # type of OS to run this job on
     runs-on: ubuntu-latest
 
     # env:
     #   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
+    # steps for this job
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -32,7 +36,7 @@ jobs:
         # with:
           # To install LaTeX to build PDF book
           # tinytex: true
-          # uncomment below and fill to pin a version
+          # To pin a particular version
           # version: SPECIFIC-QUARTO-VERSION-HERE
 
       # add software dependencies here and any libraries
@@ -46,31 +50,37 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.4.3'
+          # Use RStudio Public Package Manager which provides pre-compiled binaries
+          #  which saves a lot of time for Linux runner b/c packages do not need to
+          #  compile from source code (Gemini)
+          use-public-rspm: true
+          # To pin a particular version
+          # r-version: '4.4.3'
 
 
       # From: https://github.com/actions/runner-images/issues/37
       # From: https://p3m.dev/client/#/repos/cran/packages/overview?search=png
-      - name: Install System Dependencies for R Packages
-        run: |
-          sudo apt-get install libcurl4-openssl-dev
-          sudo apt-get install -y libpng-dev
-          sudo apt-get install -y libgdal-dev
-          sudo apt-get install -y gdal-bin
-          sudo apt-get install -y libgeos-dev
-          sudo apt-get install -y libproj-dev
-          sudo apt-get install -y libsqlite3-dev
-          sudo apt-get install -y libfontconfig1-dev
-          sudo apt-get install -y libfreetype6-dev
-          sudo apt-get install -y libfribidi-dev
-          sudo apt-get install -y libharfbuzz-dev
-          sudo apt-get install -y libudunits2-dev
-          sudo apt-get install -y make
-          sudo apt-get install -y pandoc
+      # Not required becuase of `use-public-rspm: true` in the step above
+      # - name: Install System Dependencies for R Packages
+      #   run: |
+      #     sudo apt-get install libcurl4-openssl-dev
+      #     sudo apt-get install -y libpng-dev
+      #     sudo apt-get install -y libgdal-dev
+      #     sudo apt-get install -y gdal-bin
+      #     sudo apt-get install -y libgeos-dev
+      #     sudo apt-get install -y libproj-dev
+      #     sudo apt-get install -y libsqlite3-dev
+      #     sudo apt-get install -y libfontconfig1-dev
+      #     sudo apt-get install -y libfreetype6-dev
+      #     sudo apt-get install -y libfribidi-dev
+      #     sudo apt-get install -y libharfbuzz-dev
+      #     sudo apt-get install -y libudunits2-dev
+      #     sudo apt-get install -y make
+      #     sudo apt-get install -y pandoc
 
 
       # # From: https://quarto.org/docs/publishing/github-pages.html#github-action
-      - name: Restore  R Packages from revn.lock
+      - name: Restore R Packages from revn.lock
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
